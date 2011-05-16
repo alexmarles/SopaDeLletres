@@ -125,7 +125,6 @@ $(function(){
 
   $("input").click(function(e){
     $(this).css("background-color", "#66f");
-    console.log(this);
   });
 
 });
