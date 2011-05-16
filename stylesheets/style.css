@@ -1,0 +1,70 @@
+body {
+  background-color: #ccc;
+  color: #000;
+  font-family: Helvetica, Arial, Sans-serif;
+}
+
+#wrapper {
+  width: 800px;
+  margin: 0 auto;
+}
+
+#header {
+  width: 600px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#header h1 {
+  color: #557;
+  font-size: 3.5em;
+  margin-top: 25px;
+}
+
+#header h2 {
+  color: #755;
+  font-size: 1.5em;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+#gameform {
+  width: 468px;
+  margin: 0 auto;
+  margin-top 25px;
+}
+
+#box {
+  background-color: #fff;
+  width: 468px;
+  height: 486px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+#box td {
+  border: 1px solid #000;
+}
+
+input {
+  float: left;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 25px;
+  border: 0;
+  background-color: #fff;
+}
+
+p {
+  margin-top: 25px;
+  text-align: center;
+}
+
+#bld {
+  font-weight: bold;
+}
+
+#ita {
+  font-style: italic;
+}
