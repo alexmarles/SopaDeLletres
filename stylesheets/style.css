@@ -36,24 +36,22 @@ body {
 
 #box {
   background-color: #fff;
-  width: 468px;
-  height: 486px;
+  width: 520px;
+  height: 520px;
   margin: 0 auto;
   margin-top: 10px;
 }
 
 #box td {
   border: 1px solid #000;
-}
-
-input {
   float: left;
+  line-height: 50px;
   width: 50px;
   height: 50px;
   text-align: center;
   font-size: 25px;
-  border: 0;
   background-color: #fff;
+  cursor: pointer;
 }
 
 p {

@@ -1,4 +1,5 @@
 $(function(){
+
   var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   var words = [{
     content: "BASIC",
@@ -72,6 +73,18 @@ $(function(){
   }
   ];
 
+  /*var sol = [];
+  for(var i = 0; i<10; i++)
+  {
+    for(var j = 0; j<words[i].content.length; j++)
+    {
+      sol[i] = sol[i] === undefined ? "" : sol[i];
+      sol[i] += "r"+i+"c"+j;
+      if (words[i].orientation === "horizontal")
+        {
+          if (words[i].direction === "right")*/
+
+
   function nextCell(cell,ori,dir){
     var regex = /^r(\d)c(\d)$/;
     var res = regex.exec(cell);
@@ -106,25 +119,24 @@ $(function(){
       var cell = "r"+words[i].posy+"c"+words[i].posx;
       for(var j=0; j<words[i].content.length; j++)
       {
-        if ($("#"+cell).attr("value") === "")
-          $("#"+cell).attr("value",words[i].content[j]);
+        $("#"+cell).html(words[i].content[j]);
         cell = nextCell(cell,words[i].orientation,words[i].direction);
       }
-    }
-    for(i=0; i<10; i++)
-    {
       for(j=0; j<10; j++)
       {
-        if ($("#r"+i+"c"+j).attr("value") === "")
-          $("#r"+i+"c"+j).attr("value",letters[randomXToY(0,letters.length-1)].toUpperCase());
+        if ($("#r"+i+"c"+j).html() === "")
+          $("#r"+i+"c"+j).html(letters[randomXToY(0,letters.length-1)].toUpperCase());
       }
     }
   };
 
-  fill(words);
-
-  $("input").click(function(e){
-    $(this).css("background-color", "#66f");
+  $("td").click(function(e){
+    $(this).css("background-color", "#68f");
   });
 
+
+
+  setTimeout(function() {
+    fill(words);
+  },1000);
 });
