@@ -72,18 +72,18 @@ $(function(){
     posy: 9
   }
   ];
+  var sol = "";
+  var maxcol = 10;
 
-  /*var sol = [];
-  for(var i = 0; i<10; i++)
-  {
-    for(var j = 0; j<words[i].content.length; j++)
-    {
-      sol[i] = sol[i] === undefined ? "" : sol[i];
-      sol[i] += "r"+i+"c"+j;
-      if (words[i].orientation === "horizontal")
+  function saveSolution(){
+    $("#box td").each(function(){
+      if ($(this).html() !== "")
         {
-          if (words[i].direction === "right")*/
-
+          sol += $(this).attr("id");
+          sol += " ";
+        }
+    });
+  };
 
   function nextCell(cell,ori,dir){
     var regex = /^r(\d)c(\d)$/;
@@ -91,20 +91,20 @@ $(function(){
     var row = parseInt(res[1]);
     var col = parseInt(res[2]);
     if (ori === "horizontal")
-      {
-        if (dir === "right")
-          col += 1;
-        else
-          col -= 1;
-      }
+    {
+      if (dir === "right")
+        col += 1;
       else
-        {
-          if (dir === "down")
-            row += 1;
-          else
-            row -= 1;
-        }
-        return "r"+row+"c"+col;
+        col -= 1;
+    }
+    else
+    {
+      if (dir === "down")
+        row += 1;
+      else
+        row -= 1;
+    }
+    return "r"+row+"c"+col;
   };
 
   function randomXToY(minVal,maxVal,floatVal)
@@ -113,7 +113,7 @@ $(function(){
     return typeof floatVal=='undefined'?Math.round(randVal):randVal.toFixed(floatVal);
   }
 
-  function fill(words){
+  function fill(){
     for(var i=0; i<10; i++)
     {
       var cell = "r"+words[i].posy+"c"+words[i].posx;
@@ -122,7 +122,11 @@ $(function(){
         $("#"+cell).html(words[i].content[j]);
         cell = nextCell(cell,words[i].orientation,words[i].direction);
       }
-      for(j=0; j<10; j++)
+    }
+    saveSolution();
+    for(i=0; i<10; i++)
+    {
+      for(j=0; j<maxcol; j++)
       {
         if ($("#r"+i+"c"+j).html() === "")
           $("#r"+i+"c"+j).html(letters[randomXToY(0,letters.length-1)].toUpperCase());
@@ -130,13 +134,43 @@ $(function(){
     }
   };
 
+  function checkSolution(sol, res){
+    if (sol.length !== res.length)
+      return false;
+    for(var i=0; i<sol.length; i++)
+    {
+      if (sol[i] !== res[i])
+        return false;
+    }
+    return true;
+  };
+
   $("td").click(function(e){
     $(this).css("background-color", "#68f");
   });
 
+  $("#solver").click(function(e){
+    var res = "";
+    $("#box td").each(function(){
+      if ($(this).css("background-color") === "rgb(102, 136, 255)")
+        {
+          res  += $(this).attr("id");
+          res += " ";
+        }
+    });
 
+    var correct = checkSolution(sol, res);
+
+    if (correct)
+      $("#box td").css("background-color", "#6f6");
+    else
+      $("#box td").css("background-color", "#f66");
+
+    return false;
+  });
 
   setTimeout(function() {
-    fill(words);
+    fill();
   },1000);
+
 });

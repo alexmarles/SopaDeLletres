@@ -28,10 +28,9 @@ body {
   margin-top: 10px;
 }
 
-#gameform {
-  width: 468px;
-  margin: 0 auto;
-  margin-top 25px;
+#game {
+  text-align: center;
+  margin-top: 25px;
 }
 
 #box {
