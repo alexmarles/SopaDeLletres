@@ -164,8 +164,13 @@ $(function(){
     if (correct)
       $("#box td").css("background-color", "#6f6");
     else
+    {
       $("#box td").css("background-color", "#f66");
-
+      setTimeout(function() {
+        $("#box td").css("background-color", "#fff");
+        fill();
+      },2000);
+    }
     return false;
   });
 
