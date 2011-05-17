@@ -167,7 +167,7 @@ $(function(){
       $("#box td").addClass("incorrect");
       setTimeout(function() {
         $("#box td").removeClass("incorrect");
-      },2000);
+      },1000);
     }
     return false;
   });
