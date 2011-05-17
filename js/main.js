@@ -145,33 +145,37 @@ $(function(){
     return true;
   };
 
-  $("td").click(function(e){
-    $(this).css("background-color", "#68f");
+  $("td").toggle(function(e){
+    $(this).addClass("selected");
+  }, function(e) {
+    $(this).removeClass("selected");
   });
 
   $("#solver").click(function(e){
     var res = "";
-    $("#box td").each(function(){
-      if ($(this).css("background-color") === "rgb(102, 136, 255)")
-        {
-          res  += $(this).attr("id");
-          res += " ";
-        }
+    $("#box td.selected").each(function(){
+        res  += $(this).attr("id");
+        res += " ";
     });
 
     var correct = checkSolution(sol, res);
 
     if (correct)
-      $("#box td").css("background-color", "#6f6");
+      $("#box td").addClass("correct");
     else
     {
-      $("#box td").css("background-color", "#f66");
+      $("#box td").addClass("incorrect");
       setTimeout(function() {
-        $("#box td").css("background-color", "#fff");
-        fill();
+        $("#box td").removeClass("incorrect");
       },2000);
     }
     return false;
+  });
+
+  $("#clear").click(function(e){
+    $("#box td.selected").each(function(){
+      $(this).removeClass("selected");
+    });
   });
 
   setTimeout(function() {

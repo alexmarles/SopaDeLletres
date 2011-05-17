@@ -53,6 +53,18 @@ body {
   cursor: pointer;
 }
 
+#box td.selected {
+  background: #68f;
+}
+
+#box td.correct {
+  background: #6f6;
+}
+
+#box td.incorrect {
+  background: #f66;
+}
+
 p {
   margin-top: 25px;
   text-align: center;
