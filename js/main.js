@@ -175,6 +175,8 @@ $(function(){
   $("#clear").click(function(e){
     $("#box td.selected").each(function(){
       $(this).removeClass("selected");
+      // Reset toggle state
+      $(this).click();
     });
   });
 
